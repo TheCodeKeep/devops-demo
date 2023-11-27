@@ -1,0 +1,26 @@
+name: Build Application
+
+on:
+    pull_request:
+        types:
+            - opened
+        branches:
+            - main
+            - development
+    
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+            - name: Setup DotNet
+              uses: actions/setup-dotnet@v3
+              with:
+                dotnet-version: '8.x.x'
+            - name: Install Dependencies
+              run: dotnet restore
+            - name: Build
+              run: dotnet build
+            - name: Test
+              run: dotnet test
