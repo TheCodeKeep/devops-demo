@@ -34,5 +34,6 @@ jobs:
                 
     call-docker-pipeline:
       uses: ./.github/workflows/docker.yaml
+      secrets: inherit
       with:
         version-tag: ${{ needs.calculate-version.outputs.version-tag }}
