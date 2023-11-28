@@ -1,5 +1,9 @@
 name: Build And Push Dockerimage
 
+env:
+  USER: livingwooods
+  IMAGE_NAME: ${{ github.repository }}
+
 on:
     workflow_call: 
       inputs:
@@ -28,5 +32,5 @@ jobs:
               uses: docker/build-push-action@v5
               with:
                 push: true
-                tags: ${{ inputs.version-tag }}
+                tags: ${{ env.USER }}/${{ env.IMAGE_NAME }}:${{ inputs.version-tag }}
                 
