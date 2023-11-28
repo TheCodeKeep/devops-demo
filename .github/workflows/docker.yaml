@@ -1,9 +1,9 @@
 name: Build And Push Dockerimage
 
 on:
-    workflow_call:
+    workflow_call: 
       inputs:
-        verion-tag:
+        version-tag:
           required: true
           type: string
 
@@ -25,3 +25,4 @@ jobs:
               with:
                 push: true
                 tags: ${{ inputs.verion-tag }}
+                

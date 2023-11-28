@@ -11,6 +11,8 @@ on:
             - development
 jobs:
     calculate-version:
+        outputs:
+          version-tag: ${{ steps.gitversion.outputs.semVer }}
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -29,5 +31,8 @@ jobs:
                 echo ${{ steps.gitversion.outputs.semVer }}
                 git tag ${{ steps.gitversion.outputs.semVer }}
                 git push origin ${{ steps.gitversion.outputs.semVer }}
-            - name: Call Docker Pipeline
-              uses: ./.github/workflows/docker.yaml
+                
+    call-docker-pipeline:
+      uses: ./.github/workflows/docker.yaml
+      with:
+        version-tag: ${{ needs.calculate-version.outputs.version-tag }}
