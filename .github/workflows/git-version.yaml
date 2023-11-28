@@ -1,5 +1,9 @@
 name: Calculate App Version
 
+permissions:
+    id-token: write
+    contents: write
+
 on:
     # pull_request_review:
     #     types:
