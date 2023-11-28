@@ -5,12 +5,12 @@ permissions:
     contents: write
 
 on:
-    pull_request_review:
-        types:
-            - submitted
+    push:
+        branches:
+            - main
+            - development
 jobs:
     calculate-version:
-        if: github.event.review.state == 'approved'
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
