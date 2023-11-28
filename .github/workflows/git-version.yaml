@@ -29,3 +29,5 @@ jobs:
                 echo ${{ steps.gitversion.outputs.semVer }}
                 git tag ${{ steps.gitversion.outputs.semVer }}
                 git push origin ${{ steps.gitversion.outputs.semVer }}
+            - name: Call Docker Pipeline
+              uses: ./.github/workflows/docker.yaml
