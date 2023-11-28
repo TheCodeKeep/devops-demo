@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "BlackJack.Cli": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
