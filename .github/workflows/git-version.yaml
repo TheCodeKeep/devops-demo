@@ -23,5 +23,8 @@ jobs:
             - name: Calculate Version
               id: gitversion
               uses: gittools/actions/gitversion/execute@v0
-            - name: Print Version
-              run: echo ${{ steps.gitversion.outcome.semVer }}
+            - name: Tag Repo
+              run: |
+                echo ${{ steps.gitversion.outputs.semVer }}
+                git tag ${{ steps.gitversion.outputs.semVer }}
+                git push origin ${{ steps.gitversion.outputs.semVer }}
