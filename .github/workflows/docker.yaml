@@ -2,7 +2,7 @@ name: Build And Push Dockerimage
 
 env:
   USER: livingwooods
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ github.repository.name }}
 
 on:
     workflow_call: 
